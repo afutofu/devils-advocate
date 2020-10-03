@@ -62,8 +62,8 @@ const CardCtr = (props) => {
     return fruitArr.map((fruit) => {
       return (
         <Card
-          key={fruit.id}
-          id={fruit.id}
+          key={fruit._id}
+          id={fruit._id}
           name={fruit.name}
           price={fruit.price}
           imagelink={fruit.imagelink}

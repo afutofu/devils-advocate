@@ -12,6 +12,12 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// IMPORT ROUTES
+const devilFruitRoutes = require("./routes/api/devilfruits");
+
+// ROUTES
+app.use("/api/fruits", devilFruitRoutes);
+
 // CONNECT TO DB
 mongoose.connect(
   process.env.DB_CONNECTION,

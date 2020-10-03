@@ -2,31 +2,31 @@ import * as actions from "./actionTypes";
 import axios from "axios";
 
 export function fetchFruits() {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(fetchFruitsBegin());
     axios
-      .get("/api/fruits")
-      .then(res => dispatch(fetchFruitsSuccess(res.data)))
-      .catch(error => dispatch(fetchFruitsFail(error)));
+      .get("http://localhost:5000/api/fruits")
+      .then((res) => dispatch(fetchFruitsSuccess(res.data)))
+      .catch((error) => dispatch(fetchFruitsFail(error)));
   };
 }
 
 export const fetchFruitsBegin = () => {
   return {
-    type: actions.FETCH_FRUITS_BEGIN
+    type: actions.FETCH_FRUITS_BEGIN,
   };
 };
 
-export const fetchFruitsSuccess = fruits => {
+export const fetchFruitsSuccess = (fruits) => {
   return {
     type: actions.FETCH_FRUITS_SUCCESS,
-    payload: { fruits }
+    payload: { fruits },
   };
 };
 
-export const fetchFruitsFail = error => {
+export const fetchFruitsFail = (error) => {
   return {
     type: actions.FETCH_FRUITS_FAIL,
-    payload: { error }
+    payload: { error },
   };
 };

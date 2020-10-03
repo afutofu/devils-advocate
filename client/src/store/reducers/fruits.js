@@ -29,14 +29,13 @@ import * as actions from "../actions/actionTypes";
 let initialState = {
   fruits: {},
   loading: false,
-  error: null
+  error: null,
 };
 
 const fetchFruitSuccess = (state, fruits) => {
   let newFruits = { logias: [], paramecias: [], zoans: [] };
-
-  fruits.forEach(fruit => {
-    switch (fruit.type) {
+  fruits.forEach((fruit) => {
+    switch (fruit.fruit_type) {
       case "Logia":
         newFruits.logias.push(fruit);
         break;
@@ -48,7 +47,6 @@ const fetchFruitSuccess = (state, fruits) => {
         break;
     }
   });
-
   return { ...state, loading: false, fruits: newFruits, error: null };
 };
 

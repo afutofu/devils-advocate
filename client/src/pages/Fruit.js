@@ -20,21 +20,17 @@ const fadeIn = keyframes`
 `;
 
 const FruitComp = styled.div`
-  /* position: relative; */
-  width: 100vw;
-  max-width: 100vw;
-  height: 100%;
-  min-height: 94vh;
+  position: relative;
+  width: 100%;
   padding: 40px 0;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
 `;
 
 const Background = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
@@ -50,12 +46,11 @@ const BackgroundImage = styled.img.attrs((props) => ({
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: -100;
 `;
 
 const Container = styled.div`
-  position: relative;
   width: 70%;
   background: #fefefe;
   padding: 20px 50px;
@@ -142,7 +137,7 @@ const Hr = styled.hr`
   text-align: center;
 
   :after {
-    content: "$$$";
+    /* content: "$$$"; */
     display: inline-block;
     position: relative;
     top: -0.7em;
@@ -171,7 +166,7 @@ const Info = styled.p`
   margin: 0;
   margin-bottom: 20px;
   line-height: 2.1rem;
-  text-align: justify;
+  /* text-align: justify; */
   box-sizing: border-box;
 `;
 
@@ -212,7 +207,7 @@ const Fruit = (props) => {
       for (let i = 0; i < fruits[fruitType].length; i++) {
         const fruitInArr = fruits[fruitType][i];
 
-        if (fruitInArr.id == id) {
+        if (fruitInArr._id == id) {
           fruit = fruitInArr;
           break;
         }
@@ -271,49 +266,61 @@ const Fruit = (props) => {
 
     if (props.error != null || fruit == null) {
       return (
-        <ErrorContainer>
-          <ErrorMsg>
-            Could not fetch data. Please try again at a later time.
-          </ErrorMsg>
-        </ErrorContainer>
+        <FruitComp>
+          <BackgroundImage src={w13} />
+          <Background />
+          <ErrorContainer>
+            <ErrorMsg>
+              Could not fetch data. Please try again at a later time.
+            </ErrorMsg>
+          </ErrorContainer>
+        </FruitComp>
       );
     }
 
     return (
-      <Container>
-        <Separator>
-          <Name>{fruit.name}</Name>
-          <Type>{fruit.type}</Type>
-        </Separator>
-        <Separator>
-          <Price>PRICE: {`$${numWithCommas(fruit.price)}`}</Price>
-          {renderButton(fruit)}
-        </Separator>
-        <Hr />
-        <InfoImage>
-          <InfoContent>
-            <Image src={fruit.imagelink} />
-          </InfoContent>
-          <InfoContent>
-            <SectionHeader name="english name" />
-            {renderEnglishName(fruit)}
-            <SectionHeader name="meaning" />
-            <Info>{fruit.meaning}</Info>
-            <SectionHeader name="Info" />
-            {renderInfo(fruit)}
-          </InfoContent>
-        </InfoImage>
-      </Container>
+      <FruitComp>
+        <BackgroundImage src={w13} />
+        <Background />
+        <Container>
+          <Separator>
+            <Name>{fruit.name}</Name>
+            <Type>{fruit.fruit_type}</Type>
+          </Separator>
+          <Separator>
+            <Price>PRICE: {`$${numWithCommas(fruit.price)}`}</Price>
+            {renderButton(fruit)}
+          </Separator>
+          <Hr />
+          <InfoImage>
+            <InfoContent>
+              <Image src={fruit.imagelink} />
+            </InfoContent>
+            <InfoContent>
+              <SectionHeader name="english name" />
+              {renderEnglishName(fruit)}
+              <SectionHeader name="meaning" />
+              <Info>{fruit.meaning}</Info>
+              <SectionHeader name="Info" />
+              {renderInfo(fruit)}
+            </InfoContent>
+          </InfoImage>
+        </Container>
+      </FruitComp>
     );
   };
 
-  return (
-    <FruitComp>
-      <BackgroundImage src={w13} />
-      <Background />
-      {props.loading ? <Spinner /> : renderContent()}
-    </FruitComp>
-  );
+  if (props.loading) {
+    return (
+      <FruitComp>
+        <BackgroundImage src={w13} />
+        <Background />
+        <Spinner />
+      </FruitComp>
+    );
+  }
+
+  return renderContent();
 };
 
 const mapStateToProps = (state) => {

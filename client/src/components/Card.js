@@ -42,8 +42,8 @@ const Card = styled.div`
   }
 `;
 
-const Image = styled.img.attrs(props => ({
-  src: props.src || ""
+const Image = styled.img.attrs((props) => ({
+  src: props.src || "",
 }))`
   flex-grow: 1;
   width: 100%;
@@ -80,7 +80,7 @@ const Price = styled.h2`
   color: black;
 `;
 
-const card = props => {
+const card = (props) => {
   return (
     <Card>
       <Link to={`/fruits/${props.id}`}>
