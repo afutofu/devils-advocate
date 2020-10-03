@@ -27,8 +27,11 @@ const NavItemComp = styled.div`
     cursor: pointer;
     font-weight: 700;
     box-sizing: border-box;
-
     transition: 0.2s;
+
+    :hover {
+      color: #f50000 !important;
+    }
   }
 `;
 
