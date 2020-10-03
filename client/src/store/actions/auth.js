@@ -6,21 +6,21 @@ export const login = (email, password) => {
     type: actions.LOGIN,
     payload: {
       email,
-      password
-    }
+      password,
+    },
   };
 };
 
 export const attemptLogin = (email, password) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(attemptLoginBegin());
     return axios
       .post("/api/users/login", { email, password })
-      .then(res => {
+      .then((res) => {
         dispatch(attemptLoginSuccess({ username: res.data, email }));
         return;
       })
-      .catch(error => {
+      .catch((error) => {
         dispatch(attemptLoginFail(error, error.response.status));
         throw error.response.status;
       });
@@ -29,45 +29,45 @@ export const attemptLogin = (email, password) => {
 
 const attemptLoginBegin = () => {
   return {
-    type: actions.ATTEMPT_LOGIN_BEGIN
+    type: actions.ATTEMPT_LOGIN_BEGIN,
   };
 };
 
-const attemptLoginSuccess = user => {
+const attemptLoginSuccess = (user) => {
   return {
     type: actions.ATTEMPT_LOGIN_SUCCESS,
-    payload: { user }
+    payload: { user },
   };
 };
 
 const attemptLoginFail = (error, status) => {
   return {
     type: actions.ATTEMPT_LOGIN_FAIL,
-    payload: { error, status }
+    payload: { error, status },
   };
 };
 
 export const logout = () => {
   return {
-    type: actions.LOGOUT
+    type: actions.LOGOUT,
   };
 };
 
 export const attemptRegister = (username, email, password) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(attemptRegisterBegin());
     return axios
-      .post("/api/users", {
+      .post("http://localhost:5000/api/users", {
         username: username,
         email: email,
-        password: password
+        password: password,
       })
-      .then(res => {
-        dispatch(attemptRegisterSuccess({ username, email }));
+      .then((res) => {
+        dispatch(attemptRegisterSuccess(res.data));
         return;
       })
-      .catch(error => {
-        dispatch(attemptRegisterFail(error));
+      .catch((error) => {
+        dispatch(attemptRegisterFail(error.response.data.msg));
         throw error.response.status;
       });
   };
@@ -75,20 +75,20 @@ export const attemptRegister = (username, email, password) => {
 
 const attemptRegisterBegin = () => {
   return {
-    type: actions.ATTEMPT_REGISTER_BEGIN
+    type: actions.ATTEMPT_REGISTER_BEGIN,
   };
 };
 
-const attemptRegisterSuccess = user => {
+const attemptRegisterSuccess = (data) => {
   return {
     type: actions.ATTEMPT_REGISTER_SUCCESS,
-    payload: { user }
+    payload: { data },
   };
 };
 
-const attemptRegisterFail = error => {
+const attemptRegisterFail = (error) => {
   return {
     type: actions.ATTEMPT_REGISTER_FAIL,
-    payload: { error }
+    payload: { error },
   };
 };

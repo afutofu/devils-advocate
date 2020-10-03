@@ -57,7 +57,7 @@ const navbar = (props) => {
       </React.Fragment>
     );
 
-    if (props.isLoggedIn === true) {
+    if (props.isAuthenticated === true) {
       authNavItems = (
         <React.Fragment>
           <NavItem to="/fruits" onLogout={() => logout()}>
@@ -95,8 +95,7 @@ const navbar = (props) => {
 const mapStateToProps = (state) => {
   return {
     navItem: state.navItem,
-    isLoggedIn: state.auth.isLogged,
-    username: state.auth.user.username,
+    isAuthenticated: state.auth.isAuthenticated,
   };
 };
 

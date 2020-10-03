@@ -224,7 +224,7 @@ const RegisterCard = (props) => {
         <FormInput
           name="retypePassword"
           type="password"
-          placeholder="Retype Password"
+          placeholder="Password"
           onChange={(e) => onPasswordChange(e)}
           value={passwordVal}
           errorMsg={passwordErrorMsg}
@@ -232,7 +232,7 @@ const RegisterCard = (props) => {
         <FormInput
           name="password"
           type="password"
-          placeholder="Password"
+          placeholder="Retype Password"
           onChange={(e) => onPassword2Change(e)}
           value={password2Val}
           errorMsg={password2ErrorMsg}
