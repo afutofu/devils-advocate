@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import styled from "styled-components";
@@ -7,6 +7,7 @@ import { Navbar } from "./container";
 import { Home, Fruits, Fruit, Cart, Login, Register } from "./pages";
 import ScrollToTop from "./shared/ScrollToTop";
 import store from "./config/store";
+import { fetchUser } from "./store/actions";
 
 const AppComp = styled.div`
   font-family: "Montserrat", sans-serif;
@@ -22,6 +23,10 @@ const AppComp = styled.div`
 `;
 
 const App = () => {
+  useEffect(() => {
+    store.dispatch(fetchUser());
+  }, []);
+
   return (
     <Provider store={store}>
       <Router>

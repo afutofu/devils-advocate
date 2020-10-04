@@ -22,6 +22,20 @@ const logout = (state) => {
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actions.FETCH_USER_BEGIN:
+      return {
+        ...state,
+        error: null,
+        isLoading: true,
+      };
+    case actions.FETCH_USER_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload.user,
+        error: null,
+        isLoading: false,
+      };
     case actions.ATTEMPT_REGISTER_BEGIN:
     case actions.ATTEMPT_LOGIN_BEGIN:
       return { ...state, ...initialState, isLoading: true };
@@ -35,6 +49,7 @@ const authReducer = (state = initialState, action) => {
         error: null,
         isLoading: false,
       };
+    case actions.FETCH_USER_FAIL:
     case actions.ATTEMPT_REGISTER_FAIL:
     case actions.ATTEMPT_LOGIN_FAIL:
       localStorage.removeItem("token");

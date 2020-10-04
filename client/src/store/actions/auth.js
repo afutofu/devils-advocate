@@ -1,6 +1,44 @@
 import * as actions from "./actionTypes";
 import axios from "axios";
 
+// Check token & fetch user
+export const fetchUser = () => (dispatch, getState) => {
+  return new Promise(function (resolve, reject) {
+    dispatch(fetchUserBegin());
+    axios
+      .get("http://localhost:5000/api/auth/user", tokenConfig(getState))
+      .then((res) => {
+        const user = res.data;
+        dispatch(fetchUserSuccess(user));
+        resolve();
+      })
+      .catch((err) => {
+        dispatch(fetchUserFail(err.response.data.msg));
+        reject();
+      });
+  });
+};
+
+const fetchUserBegin = () => {
+  return {
+    type: actions.FETCH_USER_BEGIN,
+  };
+};
+
+const fetchUserSuccess = (user) => {
+  return {
+    type: actions.FETCH_USER_SUCCESS,
+    payload: { user },
+  };
+};
+
+const fetchUserFail = (msg) => {
+  return {
+    type: actions.FETCH_USER_FAIL,
+    payload: { id: "FETCH_USER_ERROR", msg: msg },
+  };
+};
+
 export const login = (email, password) => {
   return {
     type: actions.LOGIN,
@@ -91,4 +129,24 @@ const attemptRegisterFail = (error) => {
     type: actions.ATTEMPT_REGISTER_FAIL,
     payload: { error },
   };
+};
+
+// Setup config/headers and token
+export const tokenConfig = (getState) => {
+  // Get token from localstorage
+  const token = getState().auth.token;
+
+  // Headers
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  // If token exists, add to headers
+  if (token) {
+    config.headers["x-auth-token"] = token;
+  }
+
+  return config;
 };

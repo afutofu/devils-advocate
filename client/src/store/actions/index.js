@@ -4,13 +4,13 @@ export {
   switchFruits,
   switchCart,
   switchLogin,
-  switchRegister
+  switchRegister,
 } from "./navItem";
 export {
   fetchFruits,
   fetchFruitsBegin,
   fetchFruitsSuccess,
-  fetchFruitsFail
+  fetchFruitsFail,
 } from "./fruits";
 export {
   addFruit,
@@ -18,6 +18,6 @@ export {
   addFruitAmt,
   removeFruitAmt,
   setHoverCartItemId,
-  clearCart
+  clearCart,
 } from "./cart";
-export { attemptLogin, logout, attemptRegister } from "./auth";
+export { attemptLogin, logout, attemptRegister, fetchUser } from "./auth";
