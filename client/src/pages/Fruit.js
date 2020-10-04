@@ -27,6 +27,10 @@ const FruitComp = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: 992px) {
+    padding: 0;
+  }
 `;
 
 const Background = styled.div`
@@ -60,6 +64,13 @@ const Container = styled.div`
 
   opacity: 0;
   animation: ${fadeIn} 1s 1s forwards;
+
+  @media only screen and (max-width: 992px) {
+    width: 100%;
+    min-height: calc(100vh - 50px);
+    border-radius: 0;
+    box-sizing: border-box;
+  }
 `;
 
 const ErrorContainer = styled.div`
@@ -79,28 +90,52 @@ const Separator = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
 `;
 
 const Name = styled.h1`
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 2.5rem;
+  font-size: 32px;
   margin: 0;
   margin-right: 20px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 28px;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 10px;
+  }
 `;
 
 const Type = styled.h1`
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 24px;
   margin: 0;
   text-transform: uppercase;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 22px;
+  }
 `;
 
 const Price = styled.h2`
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 24px;
   margin: 0;
   transform: translateX(20px);
+
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 20px;
+    transform: translateX(0);
+  }
 `;
 
 const Button = styled.button`
@@ -125,6 +160,13 @@ const Button = styled.button`
     background: ${(props) => (props.inCart ? "#ff4000" : "#f50000")};
     color: white;
   }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 14px;
+    margin: 0;
+    transform: translateX(0);
+    padding: 5px 12px;
+  }
 `;
 
 const Hr = styled.hr`
@@ -145,6 +187,11 @@ const Hr = styled.hr`
     padding: 0 0.25em;
     background: rgb(249, 249, 249);
   }
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 30px;
+    transform: translateX(0);
+  }
 `;
 
 const InfoImage = styled.div`
@@ -152,12 +199,23 @@ const InfoImage = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
 `;
 
 const InfoContent = styled.div`
   width: 50%;
   padding-left: 50px;
   box-sizing: border-box;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    padding: 0;
+  }
 `;
 
 const Info = styled.p`
@@ -173,11 +231,15 @@ const Info = styled.p`
 const Image = styled.img.attrs((props) => ({
   src: props.src || "",
 }))`
-  width: 100%;
+  width: 50%;
   height: 100%;
-  min-height: 35vh;
+  min-height: 200px;
   background: #ddd;
   margin-bottom: 20px;
+
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const ErrorMsg = styled.p`
@@ -244,7 +306,7 @@ const Fruit = (props) => {
       <Button onClick={() => props.addFruit(fruit._id)}>Add to cart</Button>
     );
 
-    if (props.isLogged == false) {
+    if (props.isAuthenticated == false) {
       return (
         <Link to="/login">
           <Button inCart={true}>Add to cart</Button>
@@ -297,9 +359,7 @@ const Fruit = (props) => {
           </Separator>
           <Hr />
           <InfoImage>
-            <InfoContent>
-              <Image src={fruit.imagelink} />
-            </InfoContent>
+            <Image src={fruit.imagelink} />
             <InfoContent>
               <SectionHeader name="english name" />
               {renderEnglishName(fruit)}
@@ -332,7 +392,7 @@ const mapStateToProps = (state) => {
     fruits: state.fruits.fruits,
     loading: state.fruits.loading,
     cart: state.cart.cart,
-    isLogged: state.auth.isLogged,
+    isAuthenticated: state.auth.isAuthenticated,
     error: state.fruits.error,
   };
 };
