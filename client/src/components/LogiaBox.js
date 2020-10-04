@@ -57,8 +57,14 @@ const OuterContainer = styled.div`
   margin-right: 10px;
   overflow: hidden;
   flex-basis: 0;
-  flex: ${props => (props.hide ? 0.1 : 1)};
+  flex: ${(props) => (props.hide ? 0.1 : 1)};
   transition: flex 0.5s, background-color 0.2s;
+
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+    margin-bottom: 10px;
+    width: 100%;
+  }
 `;
 
 const LogiaBox = styled.div`
@@ -68,6 +74,10 @@ const LogiaBox = styled.div`
   /* background-color: #c72e2e; */
   animation: ${slideInStretchOut} 1s 0.5s forwards;
   cursor: pointer;
+
+  @media only screen and (max-width: 600px) {
+    animation: ${scaleOut} 1s 0.5s ease forwards;
+  }
 `;
 
 const Background = styled.div`
@@ -79,13 +89,13 @@ const Background = styled.div`
   z-index: -50;
   transition: 0.5s;
   ${LogiaBox}:hover & {
-    background: ${props =>
+    background: ${(props) =>
       props.show ? "rgba(0,0,0, 0.5)" : "rgba(0,0,0, 0.3)"};
   }
 `;
 
-const BackgroundImage = styled.img.attrs(props => ({
-  src: props.src || ""
+const BackgroundImage = styled.img.attrs((props) => ({
+  src: props.src || "",
 }))`
   position: absolute;
   top: 0;
@@ -111,7 +121,7 @@ const Container = styled.div`
   }
 `;
 
-const getFontSize = props => {
+const getFontSize = (props) => {
   if (props.hide == false && props.show == false) {
     return "2rem";
   } else if (props.hide == false && props.show == true) {
@@ -132,8 +142,8 @@ const Name = styled.h1`
   box-sizing: border-box;
 
   transition: 0.2s;
-  opacity: ${props => (props.hide || props.show ? 0 : 1)};
-  font-size: ${props => getFontSize(props)};
+  opacity: ${(props) => (props.hide || props.show ? 0 : 1)};
+  font-size: ${(props) => getFontSize(props)};
 `;
 
 const ShowInfo = styled.div`
@@ -164,6 +174,10 @@ const ShowName = styled.h1`
   text-transform: uppercase;
   margin-bottom: 30px;
   animation: ${fadeIn} 0.3s 0.5s linear forwards;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 30px;
+  }
 `;
 
 const Underline = styled.div`
@@ -190,6 +204,10 @@ const Info = styled.div`
   box-sizing: border-box;
   opacity: 0;
   animation: ${fadeInFromBottom} 0.8s 1.3s ease forwards;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 25px;
+  }
 `;
 
 const Button = styled.button`
@@ -216,7 +234,7 @@ const Button = styled.button`
   animation: ${fadeInFromBottom} 1s 2s ease forwards;
 `;
 
-const logiaBox = props => {
+const logiaBox = (props) => {
   const renderContent = () => {
     let showInfo = null;
 

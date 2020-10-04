@@ -61,6 +61,12 @@ const OuterContainer = styled.div`
   flex-basis: 0;
   flex: ${(props) => (props.hide ? 0.1 : 1)};
   transition: flex 0.5s, background-color 0.2s;
+
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+    margin: 10px 0;
+    width: 100%;
+  }
 `;
 
 const ParameciaBoxComp = styled.div`
@@ -68,7 +74,7 @@ const ParameciaBoxComp = styled.div`
   width: 100%;
   height: 100%;
   /* background-color: #a3a3a3; */
-  animation: ${slideInStretchOut} 1s 1s forwards;
+  animation: ${scaleOut} 1s 0.9s forwards;
   cursor: pointer;
 `;
 
@@ -166,6 +172,10 @@ const ShowName = styled.h1`
   text-transform: uppercase;
   margin-bottom: 30px;
   animation: ${fadeIn} 0.3s 0.5s linear forwards;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 30px;
+  }
 `;
 
 const Underline = styled.div`
@@ -192,6 +202,10 @@ const Info = styled.div`
   box-sizing: border-box;
   opacity: 0;
   animation: ${fadeInFromBottom} 0.8s 1.3s ease forwards;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 25px;
+  }
 `;
 
 const Button = styled.button`
