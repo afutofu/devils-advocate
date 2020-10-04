@@ -79,7 +79,7 @@ const ItemCalc = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 10px;
-  font-weight: ${props => (props.hover ? "600" : "400")};
+  font-weight: ${(props) => (props.hover ? "600" : "400")};
   p {
     margin: 0;
   }
@@ -98,10 +98,10 @@ const Total = styled.p`
   margin: 0;
 `;
 
-const checkoutCard = props => {
+const checkoutCard = (props) => {
   let cartPrices = [];
 
-  const findFruit = id => {
+  const findFruit = (id) => {
     let fruit = null;
 
     for (var fruitType in props.fruits) {
@@ -110,7 +110,7 @@ const checkoutCard = props => {
       for (let i = 0; i < props.fruits[fruitType].length; i++) {
         const fruitInArr = props.fruits[fruitType][i];
 
-        if (fruitInArr.id == id) {
+        if (fruitInArr._id == id) {
           fruit = fruitInArr;
           break;
         }
@@ -121,13 +121,14 @@ const checkoutCard = props => {
   };
 
   const renderCartPrices = () => {
-    props.cart.forEach(fruitInArr => {
+    props.cart.forEach((fruitInArr, i) => {
       const fruit = findFruit(fruitInArr.id);
       const fruitPrice = fruit.price;
       const fruitAmt = fruitInArr.amt;
 
+      console.log(props.hoverId, fruit.id);
       cartPrices.unshift(
-        <ItemCalc key={fruit.id} hover={props.hoverId == fruit.id}>
+        <ItemCalc key={i} hover={props.hoverId == fruit._id}>
           <Calc>{`$${numWithCommas(fruitPrice)} x ${fruitAmt}`}</Calc>
           <Result>{`$${numWithCommas(fruitPrice * fruitAmt)}`}</Result>
         </ItemCalc>
@@ -139,7 +140,7 @@ const checkoutCard = props => {
 
   const calcTotal = () => {
     let total = 0;
-    props.cart.forEach(fruitInArr => {
+    props.cart.forEach((fruitInArr) => {
       const fruit = findFruit(fruitInArr.id);
       const fruitPrice = fruit.price;
       const fruitAmt = fruitInArr.amt;
@@ -176,11 +177,11 @@ const checkoutCard = props => {
   return renderContent();
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     fruits: state.fruits.fruits,
     cart: state.cart.cart,
-    hoverId: state.cart.hoverId
+    hoverId: state.cart.hoverId,
   };
 };
 

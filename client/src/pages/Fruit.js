@@ -218,7 +218,11 @@ const Fruit = (props) => {
   };
 
   const renderEnglishName = (fruit) => {
-    if (fruit.english_name == "None" || fruit.english_name.length < 1) {
+    if (
+      !fruit.english_name ||
+      fruit.english_name == "None" ||
+      fruit.english_name.length < 1
+    ) {
       return <Info>No Information Available</Info>;
     }
 
@@ -237,7 +241,7 @@ const Fruit = (props) => {
 
   const renderButton = (fruit) => {
     let button = (
-      <Button onClick={() => props.addFruit(fruit.id)}>Add to cart</Button>
+      <Button onClick={() => props.addFruit(fruit._id)}>Add to cart</Button>
     );
 
     if (props.isLogged == false) {
@@ -249,7 +253,7 @@ const Fruit = (props) => {
     }
 
     props.cart.forEach((fruitInArr) => {
-      if (fruitInArr.id == fruit.id) {
+      if (fruitInArr.id == fruit._id) {
         button = (
           <Link to="/cart">
             <Button inCart={true}>In cart</Button>

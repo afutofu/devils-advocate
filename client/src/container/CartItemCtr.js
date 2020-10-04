@@ -27,7 +27,7 @@ const CartItemCtr = (props) => {
       for (let i = 0; i < props.fruits[fruitType].length; i++) {
         const fruitInArr = props.fruits[fruitType][i];
 
-        if (fruitInArr.id == id) {
+        if (fruitInArr._id == id) {
           fruit = fruitInArr;
           break;
         }
@@ -44,7 +44,7 @@ const CartItemCtr = (props) => {
       if (fruit != null) {
         cartItems.unshift(
           <CartItem
-            key={fruit.id}
+            key={fruit._id}
             fruit={fruit}
             setHoverCartItemId={(id) => props.setHoverCartItemId(id)}
           />

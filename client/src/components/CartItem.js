@@ -22,8 +22,8 @@ const CartItem = styled.div`
   align-self: flex-end;
 `;
 
-const Image = styled.img.attrs(props => ({
-  src: props.src || ""
+const Image = styled.img.attrs((props) => ({
+  src: props.src || "",
 }))`
   min-width: 200px;
   width: 200px;
@@ -83,19 +83,19 @@ const CounterPos = styled.div`
   box-sizing: border-box;
 `;
 
-const cartItem = props => {
+const cartItem = (props) => {
   const fruit = props.fruit;
   let count = 1;
 
-  props.cart.forEach(fruitInArr => {
-    if (fruitInArr.id == fruit.id) {
+  props.cart.forEach((fruitInArr) => {
+    if (fruitInArr.id == fruit._id) {
       count = fruitInArr.amt;
     }
   });
 
   return (
     <CartItem
-      onMouseEnter={() => props.setHoverCartItemId(fruit.id)}
+      onMouseEnter={() => props.setHoverCartItemId(fruit._id)}
       onMouseLeave={() => props.setHoverCartItemId(null)}
     >
       <Image src={fruit.imagelink} />
@@ -111,25 +111,25 @@ const cartItem = props => {
       <CounterPos>
         <Counter
           count={count}
-          addFruitAmt={() => props.addFruitAmt(fruit.id)}
-          removeFruitAmt={() => props.removeFruitAmt(fruit.id)}
+          addFruitAmt={() => props.addFruitAmt(fruit._id)}
+          removeFruitAmt={() => props.removeFruitAmt(fruit._id)}
         />
       </CounterPos>
     </CartItem>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    cart: state.cart.cart
+    cart: state.cart.cart,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    removeFruit: id => dispatch(removeFruit(id)),
-    addFruitAmt: id => dispatch(addFruitAmt(id)),
-    removeFruitAmt: id => dispatch(removeFruitAmt(id))
+    removeFruit: (id) => dispatch(removeFruit(id)),
+    addFruitAmt: (id) => dispatch(addFruitAmt(id)),
+    removeFruitAmt: (id) => dispatch(removeFruitAmt(id)),
   };
 };
 
