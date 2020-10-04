@@ -20,17 +20,30 @@ const CartItem = styled.div`
   background: #fefefe;
   display: flex;
   align-self: flex-end;
+
+  @media (max-width: 600px) {
+    min-width: 100px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: unset;
+  }
 `;
 
 const Image = styled.img.attrs((props) => ({
   src: props.src || "",
 }))`
-  min-width: 200px;
   width: 200px;
   height: 100%;
+  min-height: 100px;
   border-radius: 5px;
   background: #f23f3f;
   box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    height: 200px;
+  }
 `;
 
 const Info = styled.div`
@@ -42,6 +55,11 @@ const Info = styled.div`
   box-sizing: border-box;
   * {
     margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 18px;
+    align-self: flex-start;
   }
 `;
 
@@ -55,6 +73,10 @@ const Name = styled.h1`
   box-sizing: border-box;
   cursor: pointer;
 
+  @media (max-width: 600px) {
+    font-size: 18px;
+  }
+
   a {
     color: black !important;
   }
@@ -65,6 +87,10 @@ const Price = styled.h2`
   font-weight: 500;
   font-size: 1.3rem;
   box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    font-size: 18px;
+  }
 `;
 
 const ExitPos = styled.div`
@@ -73,6 +99,10 @@ const ExitPos = styled.div`
   top: 10px;
   right: 10px;
   box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    top: 213px;
+  }
 `;
 
 const CounterPos = styled.div`
@@ -81,6 +111,12 @@ const CounterPos = styled.div`
   bottom: 5px;
   right: 20px;
   box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    font-size: 18px;
+    align-self: flex-start;
+    bottom: 0;
+  }
 `;
 
 const cartItem = (props) => {

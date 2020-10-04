@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ExitBtn = styled.div`
-  font-size: 1.6rem;
+  font-size: 22px;
   width: 40px;
   height: 40px;
   padding: 2px;
@@ -26,9 +26,13 @@ const ExitBtn = styled.div`
     width: 22px;
     height: 23px;
   }
+
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
 
-const exitBtn = props => {
+const exitBtn = (props) => {
   return (
     <ExitBtn onClick={props.onClick}>
       <i className="fa fa-times"></i>

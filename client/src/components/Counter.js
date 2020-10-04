@@ -10,6 +10,10 @@ const Counter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 600px) {
+    width: 80px;
+  }
 `;
 
 const Operator = styled.div`
@@ -31,6 +35,12 @@ const Operator = styled.div`
       color: white;
     }
   }
+
+  @media (max-width: 600px) {
+    width: 20px;
+    height: 20px;
+    font-weight: 400;
+  }
 `;
 
 const Icon = styled.i`
@@ -42,14 +52,22 @@ const Icon = styled.i`
   align-items: center;
   color: white;
   transform: translate(1px, 1px);
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
 `;
 
 const Count = styled.div`
   font-weight: 500;
   font-size: 1.3rem;
+
+  @media (max-width: 600px) {
+    font-size: 18px;
+  }
 `;
 
-const counter = props => {
+const counter = (props) => {
   return (
     <Counter>
       <Operator>

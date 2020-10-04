@@ -26,6 +26,8 @@ const Container = styled.div`
   width: 90%;
   height: 100%;
   margin: 0;
+  padding-right: 10px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
 `;
@@ -35,6 +37,16 @@ const NavGroup = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  margin: 0 10px;
+  box-sizing: border-box;
+
+  :first-of-type {
+    margin-left: 0;
+  }
+
+  :last-of-type {
+    margin-right: 0;
+  }
 `;
 
 const navbar = (props) => {
@@ -59,11 +71,9 @@ const navbar = (props) => {
 
     if (props.isAuthenticated === true) {
       authNavItems = (
-        <React.Fragment>
-          <NavItem to="/fruits" onLogout={() => logout()}>
-            logout
-          </NavItem>
-        </React.Fragment>
+        <NavItem to="/fruits" onLogout={() => logout()}>
+          logout
+        </NavItem>
       );
     }
 

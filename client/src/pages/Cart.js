@@ -36,6 +36,14 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
+  @media (max-width: 600px) {
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding-top: 50px;
+  }
 `;
 
 const CartItems = styled.div`
@@ -43,6 +51,11 @@ const CartItems = styled.div`
   width: 65%;
   box-sizing: border-box;
   padding-right: 50px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    padding-right: 0;
+  }
 `;
 
 const Checkout = styled.div`
@@ -50,6 +63,12 @@ const Checkout = styled.div`
   width: 35%;
   min-width: 250px;
   float: right;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    min-width: 100px;
+    margin-bottom: 50px;
+  }
 `;
 
 const Cart = () => {

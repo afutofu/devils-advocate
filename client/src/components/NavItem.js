@@ -21,9 +21,13 @@ const NavItemComp = styled.div`
     margin-right: 0;
   }
 
+  @media (max-width: 600px) {
+    margin: ${(props) => (props.logo ? "0" : "0 7px")};
+    font-size: 12px;
+  }
+
   a {
     color: ${(props) => (props.selected ? "#f50000 !important" : "white")};
-    padding: 10px;
     cursor: pointer;
     font-weight: 700;
     box-sizing: border-box;

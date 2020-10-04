@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 import logoImg from "../assets/images/logo.png";
 
-const Logo = styled.img.attrs(props => ({
-  src: props.src
+const Logo = styled.img.attrs((props) => ({
+  src: props.src,
 }))`
-  height: 60px;
+  height: 50px;
   padding: 0;
   cursor: pointer;
   box-sizing: border-box;

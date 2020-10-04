@@ -22,8 +22,8 @@ const CardsCtrComp = styled.div`
   flex-wrap: wrap;
   margin: 0;
 
-  opacity: 0;
-  animation: ${fadeIn} 1.5s 1.25s forwards;
+  /* opacity: 0;
+  animation: ${fadeIn} 2s 0s forwards; */
 `;
 
 const Container = styled.div`

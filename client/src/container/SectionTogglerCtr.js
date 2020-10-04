@@ -16,6 +16,15 @@ const slideInFadeIn = keyframes`
   }
 `;
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity:1;
+  }
+`;
+
 const SectionTogglerCtrComp = styled.div`
   position: relative;
   width: 50%;
@@ -26,7 +35,7 @@ const SectionTogglerCtrComp = styled.div`
   margin-bottom: 7vh;
 
   opacity: 0;
-  animation: ${slideInFadeIn} 1s 0.1s ease-out forwards;
+  animation: ${fadeIn} 1s 0.1s ease-out forwards;
 `;
 
 const SectionTogglerCtr = () => {

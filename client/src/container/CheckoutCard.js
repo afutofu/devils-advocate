@@ -19,9 +19,14 @@ const CheckoutCard = styled.div`
   background: #fefefe;
   margin: 0;
   box-sizing: border-box;
+
+  @media (max-width: 600px) {
+    min-width: 100px;
+  }
 `;
 
 const Header = styled.h3`
+  width: 100%;
   font-size: 1.2rem;
   margin: 0;
   margin-bottom: 10px;
@@ -34,6 +39,7 @@ const Hr = styled.hr`
   width: 100%;
   border-top: 2px solid rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
+  box-sizing: border-box;
 `;
 
 const Button = styled.button`
@@ -75,6 +81,7 @@ const ItemsCalc = styled.div`
 `;
 
 const ItemCalc = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

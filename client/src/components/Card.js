@@ -25,7 +25,7 @@ const Card = styled.div`
   background: #fefefe;
   overflow: hidden;
   opacity: 0;
-  animation: ${fadeIn} 2s 0.2s forwards;
+  animation: ${fadeIn} 1.5s 0s forwards;
 
   transition: 0.3s;
   &:hover {
