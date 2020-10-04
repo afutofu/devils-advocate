@@ -15,9 +15,9 @@ export const attemptLogin = (email, password) => {
   return (dispatch) => {
     dispatch(attemptLoginBegin());
     return axios
-      .post("/api/users/login", { email, password })
+      .post("http://localhost:5000/api/auth", { email, password })
       .then((res) => {
-        dispatch(attemptLoginSuccess({ username: res.data, email }));
+        dispatch(attemptLoginSuccess(res.data));
         return;
       })
       .catch((error) => {
@@ -33,10 +33,10 @@ const attemptLoginBegin = () => {
   };
 };
 
-const attemptLoginSuccess = (user) => {
+const attemptLoginSuccess = (data) => {
   return {
     type: actions.ATTEMPT_LOGIN_SUCCESS,
-    payload: { user },
+    payload: { data },
   };
 };
 
