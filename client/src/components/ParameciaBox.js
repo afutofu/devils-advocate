@@ -74,8 +74,12 @@ const ParameciaBoxComp = styled.div`
   width: 100%;
   height: 100%;
   /* background-color: #a3a3a3; */
-  animation: ${scaleOut} 1s 0.9s forwards;
+  animation: ${slideInStretchOut} 1s 0.9s forwards;
   cursor: pointer;
+
+  @media only screen and (max-width: 600px) {
+    animation: ${scaleOut} 1s 0.9s ease forwards;
+  }
 `;
 
 const Background = styled.div`

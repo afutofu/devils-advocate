@@ -73,8 +73,12 @@ const ZoanBoxComp = styled.div`
   width: 100%;
   height: 100%;
   /* background-color: #2cc9c9; */
-  animation: ${scaleOut} 1s 1.3s forwards;
+  animation: ${slideInStretchOut} 1s 1.5s forwards;
   cursor: pointer;
+
+  @media only screen and (max-width: 600px) {
+    animation: ${scaleOut} 1s 1.3s ease forwards;
+  }
 `;
 
 const Background = styled.div`
