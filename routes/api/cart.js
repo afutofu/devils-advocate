@@ -24,6 +24,42 @@ router.post("/", auth, (req, res) => {
   });
 });
 
+// @route   POST /api/users/:userId/cart
+// @desc    Authenticate user
+// @access  Private
+router.patch("/:fruitId", auth, (req, res) => {
+  const { userId, fruitId } = req.params;
+  const { type } = req.body;
+
+  User.findById(userId, (err, foundUser) => {
+    if (err) res.status(500).json({ msg: "User not found" });
+
+    if (type == "ADD") {
+      foundUser.cart = foundUser.cart.map((fruit) => {
+        if (fruit.id == fruitId) {
+          fruit.amt += 1;
+        }
+        return fruit;
+      });
+    }
+
+    if (type == "REMOVE") {
+      foundUser.cart = foundUser.cart.map((fruit) => {
+        if (fruit.id == fruitId) {
+          if (fruit.amt <= 1) return fruit;
+          fruit.amt -= 1;
+        }
+        return fruit;
+      });
+    }
+
+    foundUser.markModified("cart");
+    foundUser.save();
+
+    res.send(foundUser.cart);
+  });
+});
+
 // @route   DELETE /api/users/:userId/cart/:fruitId
 // @desc    Authenticate user
 // @access  Private

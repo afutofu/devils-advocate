@@ -67,9 +67,9 @@ const cartReducer = (state = initialState, action) => {
       return addFruit(state, action.payload);
     case actions.REMOVE_FRUIT_SUCCESS:
       return removeFruit(state, action.payload);
-    case actions.ADD_FRUIT_AMT:
+    case actions.ADD_FRUIT_AMT_SUCCESS:
       return addFruitAmt(state, action.payload);
-    case actions.REMOVE_FRUIT_AMT:
+    case actions.REMOVE_FRUIT_AMT_SUCCESS:
       return removeFruitAmt(state, action.payload);
     case actions.SET_HOVER_CART_ITEM_ID:
       return setHoverCartItemId(state, action.payload);

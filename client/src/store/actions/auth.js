@@ -65,8 +65,11 @@ export const attemptLogin = (email, password) => (dispatch) => {
         resolve();
       })
       .catch((error) => {
-        dispatch(attemptLoginFail(error, error.response.status));
-        reject(error.response.status);
+        console.log(error);
+        if (error.response) {
+          dispatch(attemptLoginFail(error, error.response.status));
+          reject(error.response.status);
+        }
       });
   });
 };

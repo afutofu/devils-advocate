@@ -147,8 +147,8 @@ const cartItem = (props) => {
       <CounterPos>
         <Counter
           count={count}
-          addFruitAmt={() => props.addFruitAmt(fruit._id)}
-          removeFruitAmt={() => props.removeFruitAmt(fruit._id)}
+          addFruitAmt={() => props.addFruitAmt(user._id, fruit._id)}
+          removeFruitAmt={() => props.removeFruitAmt(user._id, fruit._id)}
         />
       </CounterPos>
     </CartItem>
@@ -165,8 +165,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     removeFruit: (userId, fruitId) => dispatch(removeFruit(userId, fruitId)),
-    addFruitAmt: (id) => dispatch(addFruitAmt(id)),
-    removeFruitAmt: (id) => dispatch(removeFruitAmt(id)),
+    addFruitAmt: (userId, friendId) => dispatch(addFruitAmt(userId, friendId)),
+    removeFruitAmt: (userId, friendId) =>
+      dispatch(removeFruitAmt(userId, friendId)),
   };
 };
 

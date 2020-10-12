@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
@@ -117,6 +117,7 @@ const Button = styled.button`
 `;
 
 const LoginCard = (props) => {
+  const { isAuthenticated } = props;
   let users = [
     { id: 0, username: "test", email: "test@test.com", password: "test" },
   ];
@@ -128,6 +129,12 @@ const LoginCard = (props) => {
   const [passwordErrorMsg, setPasswordErrorMsg] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const [redirect, setRedirect] = useState(false);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setRedirect(true);
+    }
+  }, [isAuthenticated]);
 
   let isValidated = true;
 
@@ -220,7 +227,7 @@ const LoginCard = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth,
+    isAuthenticated: state.auth.isAuthenticated,
   };
 };
 
