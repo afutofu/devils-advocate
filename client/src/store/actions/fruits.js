@@ -5,7 +5,7 @@ export function fetchFruits() {
   return (dispatch) => {
     dispatch(fetchFruitsBegin());
     axios
-      .get("http://localhost:5000/api/fruits")
+      .get("/api/fruits")
       .then((res) => dispatch(fetchFruitsSuccess(res.data)))
       .catch((error) => dispatch(fetchFruitsFail(error)));
   };

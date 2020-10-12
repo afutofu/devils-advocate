@@ -4,8 +4,9 @@
   "description": "E-commerce website for One Piece's Devil Fruits",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client"
   },
   "author": "Muhammad Afuzarahman",
   "license": "ISC",
