@@ -1,5 +1,7 @@
 import * as actions from "./actionTypes";
 import axios from "axios";
+import tokenConfig from "../../shared/tokenConfig";
+import { storeCart } from "./cart";
 
 // Check token & fetch user
 export const fetchUser = () => (dispatch, getState) => {
@@ -10,6 +12,7 @@ export const fetchUser = () => (dispatch, getState) => {
       .then((res) => {
         const user = res.data;
         dispatch(fetchUserSuccess(user));
+        dispatch(storeCart(user.cart));
         resolve();
       })
       .catch((err) => {
@@ -55,7 +58,9 @@ export const attemptLogin = (email, password) => {
     return axios
       .post("/api/auth", { email, password })
       .then((res) => {
+        const { user } = res.data;
         dispatch(attemptLoginSuccess(res.data));
+        dispatch(storeCart(user.cart));
         return;
       })
       .catch((error) => {
@@ -129,24 +134,4 @@ const attemptRegisterFail = (error) => {
     type: actions.ATTEMPT_REGISTER_FAIL,
     payload: { error },
   };
-};
-
-// Setup config/headers and token
-export const tokenConfig = (getState) => {
-  // Get token from localstorage
-  const token = getState().auth.token;
-
-  // Headers
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
-  // If token exists, add to headers
-  if (token) {
-    config.headers["x-auth-token"] = token;
-  }
-
-  return config;
 };

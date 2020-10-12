@@ -249,7 +249,7 @@ const ErrorMsg = styled.p`
 `;
 
 const Fruit = (props) => {
-  const fruits = props.fruits;
+  const { fruits, user } = props;
 
   useEffect(() => {
     props.switchFruits();
@@ -303,7 +303,9 @@ const Fruit = (props) => {
 
   const renderButton = (fruit) => {
     let button = (
-      <Button onClick={() => props.addFruit(fruit._id)}>Add to cart</Button>
+      <Button onClick={() => props.addFruit(user._id, fruit._id)}>
+        Add to cart
+      </Button>
     );
 
     if (props.isAuthenticated == false) {
@@ -394,6 +396,7 @@ const mapStateToProps = (state) => {
     cart: state.cart.cart,
     isAuthenticated: state.auth.isAuthenticated,
     error: state.fruits.error,
+    user: state.auth.user,
   };
 };
 
@@ -401,7 +404,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchFruits: () => dispatch(fetchFruits()),
     switchFruits: () => dispatch(switchFruits()),
-    addFruit: (id) => dispatch(addFruit(id)),
+    addFruit: (userId, fruitId) => dispatch(addFruit(userId, fruitId)),
   };
 };
 
