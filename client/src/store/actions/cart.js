@@ -30,7 +30,21 @@ export const addFruitSuccess = (id) => {
   };
 };
 
-export const removeFruit = (id) => {
+export const removeFruit = (userId, fruitId) => (dispatch, getState) => {
+  return new Promise(function (resolve, reject) {
+    axios
+      .delete(`/api/users/${userId}/cart/${fruitId}`, tokenConfig(getState))
+      .then((res) => {
+        dispatch(removeFruitSuccess(fruitId));
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+export const removeFruitSuccess = (id) => {
   return {
     type: actions.REMOVE_FRUIT_SUCCESS,
     payload: id,

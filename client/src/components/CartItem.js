@@ -120,7 +120,7 @@ const CounterPos = styled.div`
 `;
 
 const cartItem = (props) => {
-  const fruit = props.fruit;
+  const { user, fruit } = props;
   let count = 1;
 
   props.cart.forEach((fruitInArr) => {
@@ -142,7 +142,7 @@ const cartItem = (props) => {
         <Price>{"$" + numWithCommas(fruit.price)}</Price>
       </Info>
       <ExitPos>
-        <ExitBtn onClick={() => props.removeFruit(fruit.id)} />
+        <ExitBtn onClick={() => props.removeFruit(user._id, fruit._id)} />
       </ExitPos>
       <CounterPos>
         <Counter
@@ -158,12 +158,13 @@ const cartItem = (props) => {
 const mapStateToProps = (state) => {
   return {
     cart: state.cart.cart,
+    user: state.auth.user,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    removeFruit: (id) => dispatch(removeFruit(id)),
+    removeFruit: (userId, fruitId) => dispatch(removeFruit(userId, fruitId)),
     addFruitAmt: (id) => dispatch(addFruitAmt(id)),
     removeFruitAmt: (id) => dispatch(removeFruitAmt(id)),
   };

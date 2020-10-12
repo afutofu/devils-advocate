@@ -16,6 +16,7 @@ export const fetchUser = () => (dispatch, getState) => {
         resolve();
       })
       .catch((err) => {
+        console.log(err);
         dispatch(fetchUserFail(err.response.data.msg));
         reject();
       });
@@ -52,8 +53,8 @@ export const login = (email, password) => {
   };
 };
 
-export const attemptLogin = (email, password) => {
-  return (dispatch) => {
+export const attemptLogin = (email, password) => (dispatch) => {
+  return new Promise(function (resolve, reject) {
     dispatch(attemptLoginBegin());
     return axios
       .post("/api/auth", { email, password })
@@ -61,13 +62,13 @@ export const attemptLogin = (email, password) => {
         const { user } = res.data;
         dispatch(attemptLoginSuccess(res.data));
         dispatch(storeCart(user.cart));
-        return;
+        resolve();
       })
       .catch((error) => {
         dispatch(attemptLoginFail(error, error.response.status));
-        throw error.response.status;
+        reject(error.response.status);
       });
-  };
+  });
 };
 
 const attemptLoginBegin = () => {

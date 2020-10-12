@@ -65,7 +65,7 @@ const cartReducer = (state = initialState, action) => {
       return storeCart(state, action.payload);
     case actions.ADD_FRUIT_SUCCESS:
       return addFruit(state, action.payload);
-    case actions.REMOVE_FRUIT:
+    case actions.REMOVE_FRUIT_SUCCESS:
       return removeFruit(state, action.payload);
     case actions.ADD_FRUIT_AMT:
       return addFruitAmt(state, action.payload);

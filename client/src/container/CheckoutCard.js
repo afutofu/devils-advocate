@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import _ from "lodash";
 
 import numWithCommas from "../shared/numWithCommas";
 
-const CheckoutCard = styled.div`
+const CheckoutCardComp = styled.div`
   width: 100%;
   min-width: 320px;
   max-width: 400px;
@@ -104,9 +105,16 @@ const Total = styled.p`
   align-self: flex-end;
   margin: 0;
 `;
+const CheckoutCard = (props) => {
+  const [fruitsInitialized, setFruitsInitialized] = useState(false);
 
-const checkoutCard = (props) => {
   let cartPrices = [];
+
+  useEffect(() => {
+    if (!_.isEmpty(props.fruits)) {
+      setFruitsInitialized(true);
+    }
+  }, [props.fruits]);
 
   const findFruit = (id) => {
     let fruit = null;
@@ -133,7 +141,6 @@ const checkoutCard = (props) => {
       const fruitPrice = fruit.price;
       const fruitAmt = fruitInArr.amt;
 
-      console.log(props.hoverId, fruit.id);
       cartPrices.unshift(
         <ItemCalc key={i} hover={props.hoverId == fruit._id}>
           <Calc>{`$${numWithCommas(fruitPrice)} x ${fruitAmt}`}</Calc>
@@ -172,16 +179,18 @@ const checkoutCard = (props) => {
     }
 
     return (
-      <CheckoutCard>
+      <CheckoutCardComp>
         <Header>Shopping Summary</Header>
         <Hr />
         <ShoppingSummary>{shoppingSummary}</ShoppingSummary>
         <Button>Checkout</Button>
-      </CheckoutCard>
+      </CheckoutCardComp>
     );
   };
 
-  return renderContent();
+  if (fruitsInitialized) return renderContent();
+
+  return null;
 };
 
 const mapStateToProps = (state) => {
@@ -192,4 +201,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(checkoutCard);
+export default connect(mapStateToProps)(CheckoutCard);

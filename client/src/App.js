@@ -7,7 +7,7 @@ import { Navbar } from "./container";
 import { Home, Fruits, Fruit, Cart, Login, Register } from "./pages";
 import ScrollToTop from "./shared/ScrollToTop";
 import store from "./config/store";
-import { fetchUser } from "./store/actions";
+import { fetchUser, fetchFruits } from "./store/actions";
 
 const AppComp = styled.div`
   font-family: "Montserrat", sans-serif;
@@ -25,6 +25,7 @@ const AppComp = styled.div`
 const App = () => {
   useEffect(() => {
     store.dispatch(fetchUser());
+    store.dispatch(fetchFruits());
   }, []);
 
   return (
