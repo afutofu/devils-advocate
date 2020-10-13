@@ -7,18 +7,17 @@ import { switchCart } from "../store/actions";
 
 const CartComp = styled.div`
   position: relative;
-  /* min-height: 94vh; */
-  height: 100%;
+  min-height: 100%;
   max-width: 100%;
   width: 100vw;
   box-sizing: border-box;
+  overflow: auto;
 `;
 
 const Background = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  /* background: rgba(0, 0, 0, 0.4); */
   background: #2a2a2a;
   z-index: -100;
 `;
@@ -26,7 +25,7 @@ const Background = styled.div`
 const Container = styled.div`
   position: relative;
   width: 80%;
-  min-height: 100%;
+  height: 100%;
   margin: auto;
   padding-bottom: 20px;
   box-sizing: border-box;

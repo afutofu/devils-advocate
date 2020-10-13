@@ -12,12 +12,16 @@ export const fetchUser = () => (dispatch, getState) => {
       .then((res) => {
         const user = res.data;
         dispatch(fetchUserSuccess(user));
-        dispatch(storeCart(user.cart));
+        if (user.cart) {
+          dispatch(storeCart(user.cart));
+        }
         resolve();
       })
       .catch((err) => {
         console.log(err);
-        dispatch(fetchUserFail(err.response.data.msg));
+        if (err.response) {
+          dispatch(fetchUserFail(err.response.data.msg));
+        }
         reject();
       });
   });
@@ -61,7 +65,9 @@ export const attemptLogin = (email, password) => (dispatch) => {
       .then((res) => {
         const { user } = res.data;
         dispatch(attemptLoginSuccess(res.data));
-        dispatch(storeCart(user.cart));
+        if (user.cart) {
+          dispatch(storeCart(user.cart));
+        }
         resolve();
       })
       .catch((error) => {
