@@ -69,6 +69,7 @@ const Login = () => {
 
   useEffect(() => {
     dispatch(switchLogin());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

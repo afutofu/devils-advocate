@@ -18,11 +18,13 @@ export const fetchUser = () => (dispatch, getState) => {
         resolve();
       })
       .catch((err) => {
-        console.log(err);
         if (err.response) {
           dispatch(fetchUserFail(err.response.data.msg));
+          console.log(err.response.data.msg);
+        } else {
+          console.log(err);
+          reject();
         }
-        reject();
       });
   });
 };
@@ -71,10 +73,11 @@ export const attemptLogin = (email, password) => (dispatch) => {
         resolve();
       })
       .catch((error) => {
-        console.log(error);
         if (error.response) {
           dispatch(attemptLoginFail(error, error.response.status));
           reject(error.response.status);
+        } else {
+          console.log(error);
         }
       });
   });

@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import _ from "lodash";
 
 import { NavItem, Logo } from "../components";
 import { logout, clearCart } from "../store/actions";
@@ -60,10 +59,13 @@ const navbar = (props) => {
   const renderContent = () => {
     let authNavItems = (
       <React.Fragment>
-        <NavItem to="/login" selected={navItem == "LOGIN" ? true : false}>
+        <NavItem to="/login" selected={navItem === "LOGIN" ? true : false}>
           login
         </NavItem>
-        <NavItem to="/register" selected={navItem == "REGISTER" ? true : false}>
+        <NavItem
+          to="/register"
+          selected={navItem === "REGISTER" ? true : false}
+        >
           register
         </NavItem>
       </React.Fragment>
@@ -81,15 +83,18 @@ const navbar = (props) => {
       <Navbar>
         <Container>
           <NavGroup>
-            <NavItem logo to="/" selected={navItem == "LOGO" ? true : false}>
+            <NavItem logo to="/" selected={navItem === "LOGO" ? true : false}>
               <Logo />
             </NavItem>
-            <NavItem to="/fruits" selected={navItem == "FRUITS" ? true : false}>
+            <NavItem
+              to="/fruits"
+              selected={navItem === "FRUITS" ? true : false}
+            >
               fruits
             </NavItem>
           </NavGroup>
           <NavGroup>
-            <NavItem to="/cart" selected={navItem == "CART" ? true : false}>
+            <NavItem to="/cart" selected={navItem === "CART" ? true : false}>
               cart
             </NavItem>
             {authNavItems}

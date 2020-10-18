@@ -256,6 +256,7 @@ const Fruit = (props) => {
     if (_.isEmpty(fruits)) {
       props.fetchFruits();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const findFruit = (id) => {
@@ -269,7 +270,7 @@ const Fruit = (props) => {
       for (let i = 0; i < fruits[fruitType].length; i++) {
         const fruitInArr = fruits[fruitType][i];
 
-        if (fruitInArr._id == id) {
+        if (fruitInArr._id === id) {
           fruit = fruitInArr;
           break;
         }
@@ -282,7 +283,7 @@ const Fruit = (props) => {
   const renderEnglishName = (fruit) => {
     if (
       !fruit.english_name ||
-      fruit.english_name == "None" ||
+      fruit.english_name === "None" ||
       fruit.english_name.length < 1
     ) {
       return <Info>No Information Available</Info>;
@@ -308,7 +309,7 @@ const Fruit = (props) => {
       </Button>
     );
 
-    if (props.isAuthenticated == false) {
+    if (props.isAuthenticated === false) {
       return (
         <Link to="/login">
           <Button inCart={true}>Add to cart</Button>
@@ -317,7 +318,7 @@ const Fruit = (props) => {
     }
 
     props.cart.forEach((fruitInArr) => {
-      if (fruitInArr.id == fruit._id) {
+      if (fruitInArr.id === fruit._id) {
         button = (
           <Link to="/cart">
             <Button inCart={true}>In cart</Button>

@@ -52,10 +52,11 @@ const CardCtr = (props) => {
     if (_.isEmpty(fruits)) {
       props.fetchFruits();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const createFruitCards = (fruitArr) => {
-    if (fruitArr == undefined) {
+    if (fruitArr === undefined) {
       return null;
     }
 

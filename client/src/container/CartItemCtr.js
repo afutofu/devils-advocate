@@ -27,7 +27,7 @@ const CartItemCtr = (props) => {
       for (let i = 0; i < props.fruits[fruitType].length; i++) {
         const fruitInArr = props.fruits[fruitType][i];
 
-        if (fruitInArr._id == id) {
+        if (fruitInArr._id === id) {
           fruit = fruitInArr;
           break;
         }

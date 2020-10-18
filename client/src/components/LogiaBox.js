@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
-import akainu from "../assets/images/akainu.jpg";
+// import akainu from "../assets/images/akainu.jpg";
 import ace from "../assets/images/ace.jpg";
 
 const fadeIn = keyframes`
@@ -30,10 +30,10 @@ const fadeInFromBottom = keyframes`
 }
 `;
 
-const slideIn = keyframes`
-  from{transform: translateY(-100%); pointer-events: none}
-  to{transform:translateY(0%); pointer-events: auto }
-`;
+// const slideIn = keyframes`
+//   from{transform: translateY(-100%); pointer-events: none}
+//   to{transform:translateY(0%); pointer-events: auto }
+// `;
 
 const slideInStretchOut = keyframes`
   0%{
@@ -122,11 +122,11 @@ const Container = styled.div`
 `;
 
 const getFontSize = (props) => {
-  if (props.hide == false && props.show == false) {
+  if (props.hide === false && props.show === false) {
     return "2rem";
-  } else if (props.hide == false && props.show == true) {
+  } else if (props.hide === false && props.show === true) {
     return "2rem";
-  } else if (props.hide == true && props.show == false) {
+  } else if (props.hide === true && props.show === false) {
     return "0.5rem";
   }
 };

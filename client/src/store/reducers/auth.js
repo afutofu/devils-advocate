@@ -16,10 +16,6 @@ const initialState = {
   isLoading: false,
 };
 
-const logout = (state) => {
-  return { ...state, user: {}, isLogged: false };
-};
-
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.FETCH_USER_BEGIN:

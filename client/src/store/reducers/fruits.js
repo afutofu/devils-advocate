@@ -45,6 +45,8 @@ const fetchFruitSuccess = (state, fruits) => {
       case "Zoan":
         newFruits.zoans.push(fruit);
         break;
+      default:
+        return null;
     }
   });
   return { ...state, loading: false, fruits: newFruits, error: null };

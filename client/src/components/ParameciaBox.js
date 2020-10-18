@@ -1,10 +1,9 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+// import { useSelector, useDispatch } from "react-redux";
 
-import { switchParamecia } from "../store/actions";
-import whitebeard from "../assets/images/whitebeard.jpg";
+// import whitebeard from "../assets/images/whitebeard.jpg";
 import whitebeard2 from "../assets/images/whitebeard2.jpg";
 
 const fadeIn = keyframes`
@@ -32,10 +31,10 @@ const fadeInFromBottom = keyframes`
 }
 `;
 
-const slideIn = keyframes`
-  from{transform: translateY(-100%); pointer-events: none}
-  to{transform:translateY(0%); pointer-events: auto }
-`;
+// const slideIn = keyframes`
+//   from{transform: translateY(-100%); pointer-events: none}
+//   to{transform:translateY(0%); pointer-events: auto }
+// `;
 
 const slideInStretchOut = keyframes`
   0%{
@@ -124,11 +123,11 @@ const Container = styled.div`
 `;
 
 const getFontSize = (props) => {
-  if (props.hide == false && props.show == false) {
+  if (props.hide === false && props.show === false) {
     return "2rem";
-  } else if (props.hide == false && props.show == true) {
+  } else if (props.hide === false && props.show === true) {
     return "2rem";
-  } else if (props.hide == true && props.show == false) {
+  } else if (props.hide === true && props.show === false) {
     return "0.5rem";
   }
 };
@@ -237,8 +236,8 @@ const Button = styled.button`
 `;
 
 const ParameciaBox = (props) => {
-  const fruitType = useSelector((state) => state.fruitType);
-  const dispatch = useDispatch();
+  // const fruitType = useSelector((state) => state.fruitType);
+  // const dispatch = useDispatch();
 
   const renderContent = () => {
     let showInfo = null;

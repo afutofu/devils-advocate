@@ -97,7 +97,7 @@ const Calc = styled.p``;
 
 const Result = styled.p``;
 
-const TotalCtr = styled.div``;
+// const TotalCtr = styled.div``;
 
 const Total = styled.p`
   border-top: 2px solid rgba(0, 0, 0, 0.2);
@@ -125,7 +125,7 @@ const CheckoutCard = (props) => {
       for (let i = 0; i < props.fruits[fruitType].length; i++) {
         const fruitInArr = props.fruits[fruitType][i];
 
-        if (fruitInArr._id == id) {
+        if (fruitInArr._id === id) {
           fruit = fruitInArr;
           break;
         }
@@ -142,7 +142,7 @@ const CheckoutCard = (props) => {
       const fruitAmt = fruitInArr.amt;
 
       cartPrices.unshift(
-        <ItemCalc key={i} hover={props.hoverId == fruit._id}>
+        <ItemCalc key={i} hover={props.hoverId === fruit._id}>
           <Calc>{`$${numWithCommas(fruitPrice)} x ${fruitAmt}`}</Calc>
           <Result>{`$${numWithCommas(fruitPrice * fruitAmt)}`}</Result>
         </ItemCalc>

@@ -75,6 +75,7 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(switchCart());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

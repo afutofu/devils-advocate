@@ -32,6 +32,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(switchLogo());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

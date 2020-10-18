@@ -3,12 +3,7 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { LogiaBox, ParameciaBox, ZoanBox } from "../components";
 
-import {
-  switchFruits,
-  switchLogia,
-  switchParamecia,
-  switchZoan,
-} from "../store/actions";
+import { switchLogia, switchParamecia, switchZoan } from "../store/actions";
 
 const FruitInfoBoxCtrComp = styled.div`
   width: 100%;
@@ -22,7 +17,7 @@ const FruitInfoBoxCtrComp = styled.div`
   }
 `;
 
-const FruitInfoBoxCtr = (props) => {
+const FruitInfoBoxCtr = () => {
   const [logiaHide, setLogiaHide] = useState(false);
   const [parameciaHide, setParameciaHide] = useState(false);
   const [zoanHide, setZoanHide] = useState(false);
@@ -44,7 +39,7 @@ const FruitInfoBoxCtr = (props) => {
   };
 
   const onLogiaClick = () => {
-    if (logiaHide == true || logiaShow == false) {
+    if (logiaHide === true || logiaShow === false) {
       setLogiaShow(true);
       setParameciaShow(false);
       setZoanShow(false);
@@ -58,7 +53,7 @@ const FruitInfoBoxCtr = (props) => {
   };
 
   const onParameciaClick = () => {
-    if (parameciaHide == true || parameciaShow == false) {
+    if (parameciaHide === true || parameciaShow === false) {
       setLogiaShow(false);
       setParameciaShow(true);
       setZoanShow(false);
@@ -72,7 +67,7 @@ const FruitInfoBoxCtr = (props) => {
   };
 
   const onZoanClick = () => {
-    if (zoanHide == true || zoanShow == false) {
+    if (zoanHide === true || zoanShow === false) {
       setLogiaShow(false);
       setParameciaShow(false);
       setZoanShow(true);

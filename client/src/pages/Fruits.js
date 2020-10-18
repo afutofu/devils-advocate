@@ -91,6 +91,7 @@ const Fruits = (props) => {
     let randomNum = Math.round(Math.random() * 11);
     setBgImgSrc(setRandomBackgroundImage(randomNum));
     props.switchFruits();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

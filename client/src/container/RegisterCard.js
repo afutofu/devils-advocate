@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import _ from "lodash";
 
 import { isEmpty } from "../shared/validateInput";
 import { FormInput } from "../components";
@@ -105,7 +104,7 @@ const RegisterCard = (props) => {
   const [password2ErrorMsg, setPassword2ErrorMsg] = useState(null);
 
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
+  // const [isLoading, setIsLoading] = useState(null);
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
@@ -127,25 +126,25 @@ const RegisterCard = (props) => {
     if (isEmpty(input)) {
       isValidated = false;
       setInputErrorMsg("This field is required");
-    } else if (type == "email") {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    } else if (type === "email") {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-      if (re.test(String(input).toLowerCase()) == false) {
+      if (re.test(String(input).toLowerCase()) === false) {
         isValidated = false;
         setInputErrorMsg("Invalid email format");
       } else {
         setInputErrorMsg(null);
       }
-    } else if (type == "password" && input != password2Val) {
+    } else if (type === "password" && input !== password2Val) {
       isValidated = false;
       setInputErrorMsg("Password does not match");
-    } else if (type == "password" && input.length <= 6) {
+    } else if (type === "password" && input.length <= 6) {
       isValidated = false;
       setInputErrorMsg("Password needs to be longer than 6 characters");
-    } else if (type == "retypePassword" && input != passwordVal) {
+    } else if (type === "retypePassword" && input !== passwordVal) {
       isValidated = false;
       setInputErrorMsg("Password does not match");
-    } else if (type == "retypePassword" && input.length <= 6) {
+    } else if (type === "retypePassword" && input.length <= 6) {
       isValidated = false;
       setInputErrorMsg("Password needs to be longer than 6 characters");
     } else {

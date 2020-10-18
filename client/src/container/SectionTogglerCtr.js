@@ -5,16 +5,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { SectionToggler } from "../components";
 import { switchLogia, switchParamecia, switchZoan } from "../store/actions";
 
-const slideInFadeIn = keyframes`
-  from{
-    opacity: 0;
-    transform: translateX(-200%)
-  }
-  to{
-    opacity: 1;
-    transform:translateX(0%);
-  }
-`;
+// const slideInFadeIn = keyframes`
+//   from{
+//     opacity: 0;
+//     transform: translateX(-200%)
+//   }
+//   to{
+//     opacity: 1;
+//     transform:translateX(0%);
+//   }
+// `;
 
 const fadeIn = keyframes`
   from {
@@ -47,19 +47,19 @@ const SectionTogglerCtr = () => {
       <SectionToggler
         name="logia"
         type="l"
-        selected={fruitType == "LOGIA" ? true : false}
+        selected={fruitType === "LOGIA" ? true : false}
         onClick={() => dispatch(switchLogia())}
       />
       <SectionToggler
         name="paramecia"
         type="p"
-        selected={fruitType == "PARAMECIA" ? true : false}
+        selected={fruitType === "PARAMECIA" ? true : false}
         onClick={() => dispatch(switchParamecia())}
       />
       <SectionToggler
         name="zoan"
         type="z"
-        selected={fruitType == "ZOAN" ? true : false}
+        selected={fruitType === "ZOAN" ? true : false}
         onClick={() => dispatch(switchZoan())}
       />
     </SectionTogglerCtrComp>

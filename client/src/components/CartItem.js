@@ -124,7 +124,7 @@ const cartItem = (props) => {
   let count = 1;
 
   props.cart.forEach((fruitInArr) => {
-    if (fruitInArr.id == fruit._id) {
+    if (fruitInArr.id === fruit._id) {
       count = fruitInArr.amt;
     }
   });

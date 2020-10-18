@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import _ from "lodash";
 
 import { attemptLogin } from "../store/actions";
 import { FormInput } from "../components";
@@ -67,29 +66,29 @@ const Hr = styled.hr`
   margin-bottom: 20px;
 `;
 
-const Input = styled.input.attrs((props) => ({
-  placeholder: props.placeholder,
-  type: props.type,
-  name: props.name,
-}))`
-  width: 100%;
-  height: 40px;
-  font-size: 1rem;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  outline: none;
-  padding: 5px 10px;
-  box-sizing: border-box;
-  letter-spacing: 1px;
-  background: none;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  font-family: "Montserrat", sans-serif;
+// const Input = styled.input.attrs((props) => ({
+//   placeholder: props.placeholder,
+//   type: props.type,
+//   name: props.name,
+// }))`
+//   width: 100%;
+//   height: 40px;
+//   font-size: 1rem;
+//   border-radius: 5px;
+//   margin-bottom: 20px;
+//   outline: none;
+//   padding: 5px 10px;
+//   box-sizing: border-box;
+//   letter-spacing: 1px;
+//   background: none;
+//   border: 1px solid rgba(0, 0, 0, 0.2);
+//   font-family: "Montserrat", sans-serif;
 
-  :focus {
-    background: none;
-    border: 1px solid rgba(0, 0, 0, 0.4);
-  }
-`;
+//   :focus {
+//     background: none;
+//     border: 1px solid rgba(0, 0, 0, 0.4);
+//   }
+// `;
 
 const Button = styled.button`
   width: 100%;
@@ -118,16 +117,16 @@ const Button = styled.button`
 
 const LoginCard = (props) => {
   const { isAuthenticated } = props;
-  let users = [
-    { id: 0, username: "test", email: "test@test.com", password: "test" },
-  ];
+  // let users = [
+  //   { id: 0, username: "test", email: "test@test.com", password: "test" },
+  // ];
 
   const [emailVal, setEmailVal] = useState("");
   const [passwordVal, setPasswordVal] = useState("");
   const [error, setError] = useState(null);
   const [emailErrorMsg, setEmailErrorMsg] = useState(null);
   const [passwordErrorMsg, setPasswordErrorMsg] = useState(null);
-  const [isLoading, setIsLoading] = useState(null);
+  // const [isLoading, setIsLoading] = useState(null);
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
@@ -171,7 +170,7 @@ const LoginCard = (props) => {
         })
         .catch((errorStatus) => {
           clearInputs();
-          if (errorStatus == 403) {
+          if (errorStatus === 403) {
             setError("Username or password is invalid");
           } else {
             setError("Could not fetch data. Please try again at a later time.");

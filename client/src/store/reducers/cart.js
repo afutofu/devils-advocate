@@ -22,7 +22,7 @@ const addFruit = (state, fruitIdToAdd) => {
 const removeFruit = (state, fruitIdToRemove) => {
   return {
     ...state,
-    cart: state.cart.filter((fruit) => fruit.id != fruitIdToRemove),
+    cart: state.cart.filter((fruit) => fruit.id !== fruitIdToRemove),
   };
 };
 
@@ -30,7 +30,7 @@ const addFruitAmt = (state, fruitId) => {
   return {
     ...state,
     cart: state.cart.map((fruit) => {
-      if (fruit.id == fruitId) {
+      if (fruit.id === fruitId) {
         fruit.amt += 1;
       }
       return fruit;
@@ -42,7 +42,7 @@ const removeFruitAmt = (state, fruitId) => {
   return {
     ...state,
     cart: state.cart.map((fruit) => {
-      if (fruit.id == fruitId) {
+      if (fruit.id === fruitId) {
         if (fruit.amt <= 1) return fruit;
         fruit.amt -= 1;
       }
