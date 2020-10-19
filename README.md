@@ -7,12 +7,13 @@ An e-commerce website selling 'devil fruits' from the 'One Piece' series. Data s
 Technologies used:
 
 - [React](https://reactjs.org/)
+- [Styled Components](https://styled-components.com/)
 - [Redux](https://redux.js.org/)
+- [React Router](https://reactrouter.com/)
 - [Node.js](https://nodejs.org/en/)
 - [Express](https://expressjs.com/)
 - [MongoDB](https://www.mongodb.com/)
 - [Scrapy](https://scrapy.org/)
-- [Styled Components](https://styled-components.com/)
 
 Features in this version:
 
